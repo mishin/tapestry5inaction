@@ -1,0 +1,69 @@
+@startuml
+digraph G {
+  label="How to make sure 'input' is valid"
+
+    start[shape="box", style=rounded];
+    end[shape="box", style=rounded];
+    if_valid[shape="diamond", style=""];
+    message[shape="parallelogram", style=""]
+    input[shape="parallelogram", style=""]
+
+    start -> input;
+    input -> if_valid;
+    if_valid -> message[label="no"];
+    if_valid -> end[label="yes"];
+    message -> input;
+
+    if_valid[label="Is input\nvalid?"]
+    message[label="Show\nmessage"]
+    input[label="Prompt\nfor input"]
+}
+@enduml
+
+@startuml
+digraph G {
+  label="How to make sure 'input' is valid"
+
+    start[shape="box", style=rounded];
+    end[shape="box", style=rounded];
+    if_valid[shape="diamond", style=""];
+    message[shape="parallelogram", style=""]
+    input[shape="parallelogram", style=""]
+
+    start -> input;
+    input -> if_valid;
+    if_valid -> message[label="no"];
+    if_valid -> end[label="yes"];
+    message -> input;
+}
+@enduml
+
+
+@startuml
+digraph G {
+ label="How to make sure 'input' is valid";
+
+    node[shape="box", style="rounded"]
+       start; end;
+    node[shape="parallelogram", style=""]
+       message; input;
+    node[shape="diamond", style=""]
+       if_valid;
+
+    start -> input;
+    input -> if_valid;
+    if_valid -> message[label="no"];
+    if_valid -> end[label="yes"];
+    message -> input;
+
+    {rank=same; message input}
+}
+@enduml
+
+
+@startuml
+digraph G {
+node[shadow_offset=7, shadow_blur=5] Shadow
+}
+@enduml
+'http://melp.nl/2013/08/flow-charts-in-code-enter-graphviz-and-the-dot-language/
