@@ -9,6 +9,20 @@ node[shape=box, style=rounded, shadow_offset=7, shadow_blur=5];Model;View;Contro
 
 @startuml
 
+hide empty members
+hide circle
+skinparam classarrowcolor gray
+
+HumanResources.vEmployeeDepartmentHistory --|> HumanResources.Department:References
+HumanResources.vEmployeeDepartmentHistory --|> HumanResources.Employee:References
+HumanResources.vEmployeeDepartmentHistory --|> HumanResources.EmployeeDepartmentHistory:References
+HumanResources.vEmployeeDepartmentHistory --|> Person.Person:References
+HumanResources.vEmployeeDepartmentHistory --|> HumanResources.Shift:References
+
+@enduml
+
+@startuml
+
 /' Set custom background colors for the default
    component elements and the specific stereotypes. '/
 skinparam component {
@@ -68,6 +82,37 @@ node1[label="Some Complicated Label"];
 }
 @enduml
 
+
+@startuml
+digraph G {
+    node [shape=plaintext]
+    struct1 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+  <TR><TD>left</TD><TD PORT="f1">mid dle</TD><TD PORT="f2">right</TD></TR>
+</TABLE>>];
+    struct2 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+  <TR><TD PORT="f0">one</TD><TD>two</TD></TR>
+</TABLE>>];
+    struct3 [label=<
+<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" CELLPADDING="4">
+  <TR>
+    <TD ROWSPAN="3">hello<BR/>world</TD>
+    <TD COLSPAN="3">b</TD>
+    <TD ROWSPAN="3">g</TD>
+    <TD ROWSPAN="3">h</TD>
+  </TR>
+  <TR>
+    <TD>c</TD><TD PORT="here">d</TD><TD>e</TD>
+  </TR>
+  <TR>
+    <TD COLSPAN="3">f</TD>
+  </TR>
+</TABLE>>];
+    struct1:f1 -> struct2:f0;
+    struct1:f2 -> struct3:here;
+}
+@enduml
 /'
 http://melp.nl/2013/08/flow-charts-in-code-enter-graphviz-and-the-dot-language/
 '/
@@ -87,6 +132,44 @@ Marital[shape = circle]
 
 SatisfactionF -> SatisfactionM [label = "0.4" tailport=n headport=n dir=both arrowhead=none]
 
+}
+@enduml
+
+@startuml
+digraph G {
+ fontname = "Microsoft YaHei";
+     rankdir = TB;
+     fontsize = 12;
+
+     node [fontname = "Microsoft YaHei", fontsize = 12, shape = "record" ];
+     edge [fontname = "Microsoft YaHei", fontsize = 12 ];
+
+         subgraph cluster_sl{
+             label="IDP支持层";
+             bgcolor="mintcream";
+             node [shape="Mrecord", color="skyblue", style="filled"];
+             network_mgr [label="网络管理器"];
+             log_mgr [label="日志管理器"];
+             module_mgr [label="模块管理器"];
+             conf_mgr [label="配置管理器"];
+             db_mgr [label="数据库管理器"];
+         };
+
+         subgraph cluster_md{
+             label="可插拔模块集";
+             bgcolor="lightcyan";
+             node [color="chartreuse2", style="filled"];
+             mod_dev [label="开发支持模块"];
+             mod_dm [label="数据建模模块"];
+             mod_dp [label="部署发布模块"];
+         };
+
+     mod_dp -> mod_dev [label="依赖..."];
+     mod_dp -> mod_dm [label="依赖..."];
+     mod_dp -> module_mgr [label="安装...", color="yellowgreen", arrowhead="none"];
+     mod_dev -> mod_dm [label="依赖..."];
+     mod_dev -> module_mgr [label="安装...", color="yellowgreen", arrowhead="none"];
+     mod_dm -> module_mgr [label="安装...", color="yellowgreen", arrowhead="none"];
 }
 @enduml
 
@@ -495,4 +578,88 @@ orientation = Portrait;
     0 -> 0 [label = "q", fontsize = 14];
     0 -> 0 [label = "xyzabc", fontsize = 14];
        }
+@enduml
+
+
+@startuml
+skinparam rectangle {
+    roundCorner<<Concept>> 25
+    roundCorner<<Foo>> 45
+    backgroundColor<<Concept>> White
+}
+
+rectangle "Concept Model" <<Foo>> {
+    rectangle "e" <<Concept>> as e
+    rectangle "F"
+}
+@enduml
+
+@startuml
+skinparam lifelineStrategy solid
+skinparam handwritten false
+skinparam monochrome true
+skinparam packageStyle rect
+skinparam defaultFontName FG Virgil
+skinparam shadowing true
+skinparam classBorderThickness .5
+skinparam usecaseBorderThickness .5
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam rectangleBorderThickness 0.5
+
+skinparam classBorderThickness<<stereo>> 5
+skinparam packageBorderThickness<<stereo>> 1.5
+skinparam packageBorderThickness 0.5
+skinparam classFontColor red
+skinparam classFontSize 10
+skinparam classFontName Courier
+
+participant "__Connection Factories__" as connectionFactories
+participant "__Connections__" as Connections
+participant "__Session__" as Session
+participant "__Message Producer__" as messageProducer
+participant "__Message Consumer__" as messageConsumer
+participant "__Temporary Destination__" as temporaryDestination
+participant "__Broker__" as Broker
+
+
+/' This is how you can
+span multiple lines
+of comments
+'/
+hide footbox
+title Connection Factories
+
+connectionFactories -> Connections : createConnections()
+activate Connections
+Connections -> Session : createSession()
+deactivate Connections
+activate Session
+
+Session -> messageProducer : CreateProducer()
+activate messageProducer
+Session -> messageProducer : CreateMessage()
+deactivate Session
+
+
+deactivate messageProducer
+Session -> temporaryDestination : createTemporaryQueue() or createTemporaryTopic()
+activate temporaryDestination
+deactivate temporaryDestination
+Session -> messageConsumer : CreateConsumer()
+activate messageConsumer
+deactivate messageConsumer
+
+Connections -> Connections: start()
+activate Connections
+deactivate Connections
+messageProducer -> Broker : send()
+activate Broker
+Broker -> temporaryDestination: send()
+deactivate Broker
+activate temporaryDestination
+deactivate temporaryDestination
+
+
+
 @enduml
