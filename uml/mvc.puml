@@ -12,8 +12,6 @@ note left
 end note
 @enduml
 
-
-
 @startuml
 skinparam dpi 300
 scale 1200*600
@@ -27,6 +25,849 @@ m2 : <img:MessageIcon.gif>
 m1 -> s1
 s1 -> m2
 @enduml
+
+@startdot
+digraph G {
+size="8,5";
+node  [style="rounded,filled,bold", shape=box, fixedsize=true, width=1.3, fontname="Arial",width=1.25];
+Model -> View[style=dotted, arrowhead=empty][label="Change notification"]
+Model -> View[label="State query"][dir=back];
+Model -> Controller[label="State change", splines=ortho, nodesep=1][dir=back];
+View -> Controller[label="View selection"][dir=back];
+View -> Controller[style=dotted, arrowhead=empty][label="User actions"];
+{rank=same;View Controller}
+}
+@enddot
+
+@startdot
+digraph G {
+    node [shape=circle];
+    a -> b [label="label",lblstyle="draw=red,cross out"];
+    b -> c [label="test",lblstyle="below=0.5cm,rotate=20,fill=blue!20"];
+    a [label="aa",lblstyle="blue"];
+    b [lblstyle="font=\Huge"];
+    c [label="ccc", lblstyle="red,rotate=90"];
+    label="Graph label";
+    lblstyle="draw,fill=red!20";
+    rankdir=LR;
+}
+@enddot
+
+@startdot
+digraph G {
+node [shape=plaintext fontname="Arial"];
+
+  0  [label="zero"      ];
+  1  [label="one"       ];
+  2  [label="two"       ];
+  3  [label="three"     ];
+  4  [label="four"      ];
+  5  [label="five"      ];
+  6  [label="six"       ];
+  7  [label="seven"     ];
+  8  [label="eight"     ];
+  9  [label="nine"      ];
+  10 [label="ten"       ];
+  11 [label="eleven"    ];
+  12 [label="twelve"    ];
+  13 [label="thirteen"  ];
+  14 [label="fourteen"  ];
+  15 [label="fivteen"   ];
+  16 [label="sixteen"   ];
+  17 [label="seventeen" ];
+  18 [label="eighteen"  ];
+  19 [label="nineteen"  ];
+  20 [label="twenty"    ];
+  21 [label="twenty-one"];
+  22 [label="twenty-two"];
+
+  0  -> 1  [arrowhead=none];
+  1  -> 2  [arrowhead=none];
+  2  -> 7  [arrowhead=none];
+  7  -> 8  [arrowhead=none];
+  8  -> 9  [arrowhead=none];
+  8  -> 10 [arrowhead=none];
+  9  -> 10 [color="#aaaaaa" constraint=false];
+  10 -> 11 [arrowhead=none];
+  10 -> 12 [arrowhead=none];
+  11 -> 12 [color="#aaaaaa" constraint=false];
+  7  -> 13 [arrowhead=none];
+  8  -> 13 [color="#aaaaaa" constraint=false];
+  13 -> 14 [arrowhead=none];
+  7  -> 15 [arrowhead=none];
+  13 -> 15 [color="#aaaaaa" constraint=false];
+  15 -> 16 [arrowhead=none];
+  15 -> 17 [arrowhead=none];
+  16 -> 17 [color="#aaaaaa" constraint=false];
+  2  -> 3  [arrowhead=none];
+  7  -> 3  [color="#aaaaaa" constraint=false];
+  3  -> 4  [arrowhead=none];
+  2  -> 5  [arrowhead=none];
+  3  -> 5  [color="#aaaaaa" constraint=false];
+  5  -> 6  [arrowhead=none];
+  2  -> 18 [arrowhead=none];
+  5  -> 18 [color="#aaaaaa" constraint=false];
+  18 -> 19 [arrowhead=none];
+  19 -> 20 [arrowhead=none];
+  19 -> 21 [arrowhead=none];
+  20 -> 21 [color="#aaaaaa" constraint=false];
+  18 -> 22 [arrowhead=none];
+  19 -> 22 [color="#aaaaaa" constraint=false];
+}
+@enddot
+
+@startdot
+digraph G {
+node [color=Blue,shape=box]
+
+  1.1 [label="Frequency of t exceeds upper threshold"]
+  2.1 [label="t has d-mutant tiles"]
+  2.2 [label="Valid"]
+  3.1 [label="Frequency of t exceeds lower threshold"]
+  3.2 [label="Frequency of t exceeds lower threshold"]
+  4.1 [label="Insufficient evidence"]
+  4.2 [label="Valid"]
+  4.3 [label="t has only one d-mutant that exceeds lower threshold"]
+  4.4 [label="Are there any d-mutant tiles with significantly higher frequencies?"]
+  5.1 [label="Insufficient evidence"]
+  node [color=Green] 5.2 [label="Correct t to t'"] node [color=Blue]
+  5.3 [label="t has a d-mutant tile t' that is closer than all other d-mutant tiles and for which a corrected base has a higher quality score"]
+  5.4 [label="Valid"]
+  6.1 [label="Insufficient evidence"]
+  6.2 [label="t' is unique"]
+  7.1 [label="Insufficient evidence"]
+  node [color=Green] 7.2 [label="Correct t to t'"] node [color=Blue]
+
+  1.1 -> 2.1 [label="no"]
+  1.1 -> 2.2 [label="yes"]
+  2.1 -> 3.1 [label="no"]
+  2.1 -> 3.2 [label="yes"]
+  3.1 -> 4.1 [label="no"]
+  3.1 -> 4.2 [label="yes"]
+  3.2 -> 4.3 [label="no"]
+  3.2 -> 4.4 [label="yes"]
+  4.3 -> 5.1 [label="no"]
+  4.3 -> 5.2 [label="yes"]
+  4.4 -> 5.3 [label="no"]
+  4.4 -> 5.4 [label="yes"]
+  5.3 -> 6.1 [label="no"]
+  5.3 -> 6.2 [label="yes"]
+  6.2 -> 7.1 [label="no"]
+  6.2 -> 7.2 [label="yes"]
+}
+@enddot
+
+@startdot
+digraph G {
+ a -> b [ label="a to b" labeltooltip="this is a tooltip" ];
+ b -> c [ label="another label"];
+}
+@enddot
+
+@startdot
+digraph G {
+    d2tdocpreamble = "\usetikzlibrary{automata}";
+    d2tfigpreamble = "\tikzstyle{every state}= \
+    [draw=blue!50,very thick,fill=blue!20]";
+    node [style="state"];
+    edge [lblstyle="auto",topath="bend left"];
+    A [style="state, initial"];
+    A -> B [label=2];
+    A -> D [label=7];
+    B -> A [label=1];
+    B -> B [label=3,topath="loop above"];
+    B -> C [label=4];
+    C -> F [label=5];
+    F -> B [label=8];
+    F -> D [label=7];
+    D -> E [label=2];
+    E -> A [label="1,6"];
+    F [style="state,accepting"];
+}
+@enddot
+
+
+@startdot
+digraph G {
+    pad=0.2;
+    {
+        rank=same;
+        node [shape = point, style = invis]; q_0;
+        node [shape = doublecircle, style = solid]; q_5;
+        node [shape = circle];
+        q_1 [ label = <<i>q<sub>1</sub></i>> ];
+        q_2 [ label = <<i>q<sub>2</sub></i>> ];
+        q_3 [ label = <<i>q<sub>3</sub></i>> ];
+        q_4 [ label = <<i>q<sub>4</sub></i>> ];
+        q_5 [ label = <<i>q<sub>5</sub></i>> ];
+        q_0 -> q_1;
+        q_1 -> q_2 [ label = "." ];
+        q_1 -> q_2 [ label = <&epsilon;>, constraint=false ];
+        q_2 -> q_1 [ label = <&epsilon;>, constraint=false ];
+        q_2 -> q_3 [ label = <<i>a</i>> ];
+        q_3 -> q_4 [ label = <<i>^a</i>> ];
+        q_3 -> q_4 [ label = <&epsilon;>, constraint=false ];
+        q_4 -> q_3 [ label = <&epsilon;>, constraint=false ];
+        q_4 -> q_5 [ label = <<i>b</i>> ];
+        q_1 -> q_2 [ label = <<table cellpadding="10" border="0" cellborder="0">
+                                <tr><td>&epsilon;</td></tr>
+                              </table>>,
+                     constraint = false ];
+    }
+}
+@enddot
+
+@startdot
+digraph G {
+  graph [label="Orthogonal edges", splines=ortho, nodesep=0.8]
+  node [shape=box]
+  a->{b c}
+  b->{d e}
+  c->{f g}
+}
+@enddot
+
+@startdot
+digraph uart_flow {
+rankdir=LR
+
+start [style = rounded, shape = rect, label="RX event"]
+handler [style = rounded, shape = rect, label="Call\nhandler"]
+header_done [shape=diamond, label="Header\nreceived?"]
+has_payload [shape=diamond, label="Has\npayload?"]
+payload_done [shape=diamond, label="Payload\nreceived?"]
+
+{ edge [weight=100]
+start -> header_done
+{ edge [label="Yes"]
+header_done -> has_payload
+has_payload -> payload_done
+payload_done -> handler
+}
+}
+{ edge [label="No"]
+header_done:s -> start:s
+has_payload:s -> handler:s
+payload_done:n -> start:n
+}
+}
+@enddot
+
+@startdot
+digraph G {
+rankdir=LR; fontname="sans-serif"; penwidth="0.1"; edge [comment="Wildcard edge", fontname="sans-serif", fontsize=10, colorscheme="blues3", color=2, fontcolor=3]; node [fontname="serif", fontsize=13, fillcolor="1", colorscheme="blues4", color="2", fontcolor="4", style="filled"]; "a"; "b"; "a" -> "b" [dir="both"];
+}
+@enddot
+
+@startdot
+digraph G {
+ rankdir=LR; /* graph from left to right */
+fontname=ubuntu; /* ubuntu is our standard font */
+labeljust=l; /* cluster labels aligned left */
+splines=ortho; /* arrows are straight and w 90 deg angles */
+penwidth=2; /* for cluster borders */
+color=gray; /* for cluster borders */
+
+/* default node config: */
+node [shape=box fontsize=14 width=1.5 height=1 fixedsize=true ]
+
+subgraph cluster0
+{
+
+{
+rank = same; /* rank=same aligns both elements */
+a;
+aout
+}
+subgraph cluster3{
+margin=8
+style=dashed
+color=grey
+choice [height=2.2 width=1]
+b
+c
+}
+d
+aout -> a
+a -> choice
+choice -> {b c}
+{b c} -> d
+d -> aout [tailport=s headport=e color=blue constraint=false] /* arrow leaves south of block, reaches east of another block, same as saying: d:s -> aout:e */
+
+}
+}
+@enddot
+
+
+@startdot
+graph g {
+
+ratio=fill
+splines=spline
+overlap=scale
+
+node [shape=circle,
+      fixedsize=true,
+      width=0.3,
+      color="black",
+      fillcolor="#eeeeee",
+      style="filled,solid",
+      fontsize=12]
+
+q0 [label="0", xlabel="000", pos="0,0"]
+q1 [label="1", xlabel="001", pos="0,1"]
+q2 [label="2", xlabel="010", pos="1,0"]
+q3 [label="3", xlabel="011", pos="1,1"]
+
+q4 [label="4", xlabel="100", pos="-0.5,-0.5"]
+q5 [label="5", xlabel="101", pos="-0.5,0.5"]
+q6 [label="6", xlabel="110", pos="0.5,-0.5"]
+q7 [label="7", xlabel="111", pos="0.5,0.5"]
+
+q0--q1
+q0--q2
+q1--q3
+q2--q3
+
+q4--q5
+q4--q6
+q5--q7
+q6--q7
+
+q0--q4
+q1--q5
+q2--q6
+q3--q7
+}
+@enddot
+
+@startdot
+graph g {
+
+bgcolor="#ffffff00"
+overlap=scale
+
+layout=fdp
+
+start=2
+edge [penwidth=0.75,arrowsize=0.6]
+edge [color=black, fontsize=8, forcelabels=true]
+
+node [shape=circle,
+      fixedsize=true,
+      width=0.25,
+      color="black",
+      fillcolor="white",
+      style="filled,solid",
+      fontsize=12];
+
+
+node1 [label="s₁"] # u+2081 (yes, it can do unicode!)
+node2 [label="s₂"]
+node3 [label="s₃"]
+node4 [label="t₁",pos="0,0"]
+node5 [label="t₂",pos="0,1"]
+node6 [label="t₃",pos="1,1"]
+node7 [label="t₄",pos="1,0"]
+
+subgraph clusterG0 {
+    label="G∪T" # union u+222a
+
+
+    subgraph clusterG1 {
+            label="G"
+            bgcolor=white
+            node1--node2
+            node2--node3
+            node3--node1
+    }
+
+    node3--node6[style=dashed,penwidth=1]
+
+    subgraph clusterG2 {
+            label="H"
+            bgcolor=white
+            node4--node5
+            node5--node6
+            node6--node4
+            node6--node7
+    }
+}
+
+}
+@enddot
+
+
+
+@startdot
+digraph G {
+bgcolor="#ffffff00" # RGBA (with alpha)
+splines=true
+overlap=scale
+
+node [shape=circle,
+      fixedsize=true,
+      width=0.25,
+      color="black", # node border color (X11 or HTML colors)
+      fillcolor=white, # node fill color (X11 or HTML colors)
+      style="filled,solid",
+      fontcolor=darkred, # text color (X11 or HTML colors)
+      fontsize=12]
+
+edge [ penwidth=0.75, color=black ]
+
+node1 [label="1"]
+node2 [label="2"]
+node3 [label="3"]
+node4 [label="4"]
+node5 [label="5"]
+node6 [label="6"]
+node7 [label="7"]
+
+node1 -> node2
+node1 -> node3
+node1 -> node4
+node1 -> node5
+
+node2 -> node3
+node2 -> node4
+node2 -> node6
+
+node3 -> node4
+node4 -> node5
+node4 -> node7
+node4 -> node6
+
+node5 -> node7}
+@enddot
+
+@startdot
+digraph G {
+rankdir=LR
+a->b[dir=both]
+b->c[dir=both,label="        "]// Just use the space to increase the edge length
+}
+@enddot
+
+@startdot
+digraph G {
+ rankdir="LR";
+  //orientation=landscape;
+    node [shape=ellipse, fontsize=30];
+  {node [label="Original"] old;}
+  {node [label="Final"] new;}
+  {node [label="Intermediate"] ir;}
+
+old -> ir [label="suggest", fontsize=30];
+ir -> ir [label="validate", fontsize=30, len=f];
+ir -> new [label = "finalize", fontsize=30];
+}
+@enddot
+
+@startdot
+digraph G {
+ rankdir="LR";
+  dpi=300;
+  node[
+    fontname="Arial",
+    shape="square",
+    fixedsize=false,
+    width=1.809,
+    style=rounded
+  ];
+
+  edge [
+    arrowhead="none"
+  ];
+
+  Node1 -> Node2;
+  Node2 -> Node3;
+  Node3 -> Node4;
+}
+@enddot
+
+@startdot
+digraph G {
+  rankdir=BT // Graph direction : Bottom-Top
+  node [shape=record] // all nodes are in Box shape
+  edge [dir=normal labeldistance=1] // "labeldistance=1" is default value
+
+  // Multiplicity types by Crow's Foot Notation
+  Member1 -> Group1 [dir=both arrowtail=crowodot arrowhead=teetee label="0or* to 1"]
+  Member2 -> Group2 [dir=both arrowtail=teeodot arrowhead=teetee label="0or1 to 1"]
+  Member3 -> Group3 [dir=both arrowtail=crowtee arrowhead=crowodot label="1or* to 0or*"]
+
+}
+@enddot
+
+
+@startdot
+digraph G {
+  rankdir=BT // Graph direction : Bottom-Top
+  node [shape=record] // all nodes are in Box shape
+  edge [dir=normal labeldistance=1] // "labeldistance=1" is default value
+
+  // Multiplicity types by Crow's Foot Notation
+  Member1 -> Group1 [dir=both arrowtail=crowodot arrowhead=teetee label="0or* to 1"]
+  Member2 -> Group2 [dir=both arrowtail=teeodot arrowhead=teetee label="0or1 to 1"]
+  Member3 -> Group3 [dir=both arrowtail=crowtee arrowhead=crowodot label="1or* to 0or*"]
+
+}
+@enddot
+
+
+@startdot
+digraph G {
+//rankdir=LR // from bottom to top
+node[shape=record]
+
+// User, Role, and Assignment
+_UserRole [shape=point label=""]
+User -> _UserRole [dir=both arrowtail=crowodot arrowhead=none taillabel="has"]
+_UserRole -> Role [dir=both arrowtail=none arrowhead=crowodot]
+Assignment -> _UserRole [style=dotted arrowhead=none]
+
+// User, Session and Role
+Session -> User [dir=both arrowtail=crowodot arrowhead=teetee headlabel="establishes" taillabel="_"] // empty label
+Session -> Role [dir=both arrowtail=crowodot arrowhead=crowodot taillabel="___activates"] // use _ instead of whitespace
+
+// Role inheritance
+Role -> Role [arrowhead=onormal taillabel="inherits"]
+
+// Role and Permission
+Role -> Permission [dir=both arrowtail=crowodot arrowhead=crowodot taillabel="has"]
+
+// Operation and Resource, and the ASSOCIATION with Permission
+_OperationResource [shape=point label=""]
+Operation -> _OperationResource [dir=both arrowtail=crowodot arrowhead=none]
+_OperationResource -> Resource [dir=both arrowtail=none arrowhead=crowodot]
+Permission -> _OperationResource [style=dotted arrowhead=none]
+}
+@enddot
+
+@startdot
+digraph G {
+ a;
+  ab[label="", fixedsize="false", width=0, height=0, shape=none];
+  b;
+  c;
+
+  a -> ab[arrowhead=None];
+  ab -> b;
+  c -> ab;
+}
+@enddot
+
+@startdot
+digraph G {
+  ab[label="", fixedsize="false", width=0, height=0, shape=none];
+
+  a -> ab[arrowhead=None];
+  ab -> b;
+  c -> ab;
+
+  {rank=same; a; ab; b};
+}
+@enddot
+
+@startdot
+digraph G {
+rankdir=LR;
+  size="8,5";
+  concentrate=true;
+
+  node  [style="rounded,filled,bold", shape=box, fixedsize=true, width=1.3, fontname="Arial"];
+  Created   [fillcolor=black, shape=circle, label="", width=0.25];
+  Destroyed [fillcolor=black, shape=doublecircle, label="", width=0.3];
+  Empty     [fillcolor="#a0ffa0"];
+  Failed    [fillcolor="#ffa0a0"];
+  Announced [fillcolor="#a0ffa0"];
+  Assigned  [fillcolor="#a0ffa0"];
+  Working   [fillcolor="#a0ffa0"];
+  Ready     [fillcolor="#a0ffa0"];
+  TimedOut  [fillcolor="#ffa0a0"];
+
+  {
+    rank=source; Created; Destroyed;
+  }
+  {
+    rank=same;Announced;Failed;
+  }
+  {
+    rank=same;Assigned;TimedOut;
+  }
+
+  edge  [style=bold, fontname="Arial", weight=100]
+  Empty     -> Announced [ label="announce"   ];
+  Announced -> Assigned  [ label="assign"     ];
+  Assigned  -> Working   [ label="start"      ];
+  Working   -> Ready     [ label="finish"     ];
+  Ready     -> Empty     [ label="revoke", weight=1     ];
+
+  edge  [color="#aaaaaa", weight=1]
+  Announced -> TimedOut  [ label="timeout"    ];
+  Assigned  -> TimedOut  [ label="timeout"    ];
+  Working   -> TimedOut  [ label="timeout"    ];
+  Working   -> Failed    [ label="error"      ];
+  TimedOut  -> Announced [ label="announce"   ];
+  TimedOut  -> Empty     [ label="revoke"     ];
+  Failed    -> Announced [ label="announce"   ];
+  Failed    -> Empty     [ label="revoke"     ];
+
+  Created   -> Empty     [ label="initialize" ];
+  Empty     -> Destroyed [ label="finalize"   ];
+  Announced -> Empty     [ label="revoke"     ];
+  Assigned  -> Empty     [ label="revoke"     ];
+  Working   -> Empty     [ label="revoke"     ];
+}
+@enddot
+@startdot
+digraph G {
+rankdir=LR;
+     size="8,5";
+
+     node  [style="rounded,filled,bold", shape=box, fixedsize=true, width=1.3, fontname="Arial"];
+     Created   [fillcolor=black, shape=circle, label="", width=0.25];
+     Destroyed [fillcolor=black, shape=doublecircle, label="", width=0.3];
+     Empty     [fillcolor="#a0ffa0"];
+    Announced [fillcolor="#a0ffa0"];
+    Assigned  [fillcolor="#a0ffa0"];
+    Working   [fillcolor="#a0ffa0"];
+    Ready     [fillcolor="#a0ffa0"];
+    TimedOut  [fillcolor="#ffa0a0"];
+    Failed    [fillcolor="#ffa0a0"];
+
+    {
+      rank=source; Created Destroyed;
+    }
+
+    edge  [style=bold, fontname="Arial" weight=2]
+    Empty     -> Announced [ label="announce"   ];
+    Announced -> Assigned  [ label="assign"     ];
+    Assigned  -> Working   [ label="start"      ];
+    Working   -> Ready     [ label="finish"     ];
+    Ready     -> Empty     [ label="revoke"     ];
+
+    edge  [fontname="Arial" color="#aaaaaa" weight=1]
+    Announced -> TimedOut  [ label="timeout"    ];
+    Assigned  -> TimedOut  [ label="timeout"    ];
+    Working   -> TimedOut  [ label="timeout"    ];
+    Working   -> Failed    [ label="error"      ];
+    TimedOut  -> Announced [ label="announce"   ];
+    TimedOut  -> Empty     [ label="revoke"     ];
+    Failed    -> Announced [ label="announce"   ];
+    Failed    -> Empty     [ label="revoke"     ];
+
+    edge  [style=bold, fontname="Arial" weight=1]
+    Created   -> Empty     [ label="initialize" ];
+    Empty     -> Destroyed [ label="finalize"   ];
+    Announced -> Empty     [ label="revoke"     ];
+    Assigned  -> Empty     [ label="revoke"     ];
+    Working   -> Empty     [ label="revoke"     ];
+}
+@enddot
+
+@startdot
+digraph G {
+color = white;
+labelloc="c"
+label = "process #2";
+b0 [shape=ellipse];
+}
+@enddot
+@startdot
+digraph G {
+  edge [dir="back"];
+  a -> b;
+  c -> a;
+}
+@enddot
+@startdot
+digraph G {
+  a -> b;
+  c -> a [dir="back"];
+  {rank=same;c a b}
+}
+@enddot
+
+@startdot
+digraph G {
+ rankdir = LR;
+    {rank=same; S; A}
+    B -> A -> T;
+    B -> S -> T;
+    A -> A;
+    S -> S;
+    A -> S[dir=both];
+}
+@enddot
+
+Controller -> View;
+
+@startdot
+digraph G {
+    dir="forward"; /* implied */
+    A -> B [label="foo"];
+    A -> B [label="bar"];
+    B -> A;
+    C;
+}
+@enddot
+
+@startdot
+digraph G {
+    dir="back"; /* note the change to this line */
+    A -> B [label="foo"];
+    A -> B [label="bar"];
+    B -> A;
+    C;
+}
+@enddot
+
+@startdot
+digraph G {
+A -> B [label="foo"];
+A -> B [label="bar"];
+B -> A; C;
+}
+@enddot
+
+@startdot
+digraph G {
+    A -> B [key=2];
+    B -> A [key=0, label=foo];
+    B -> A [key=1, label=bar];
+    C;
+}
+@enddot
+
+@startdot
+graph G {
+  a -- b
+  a -- b
+  b -- a [color=blue]
+}
+@enddot
+
+'Model -> Controller;
+
+
+
+
+
+
+/'Employees -> Employees;
+EmployeeTerritories -> Employees;
+EmployeeTerritories -> Territories;
+Order Details -> Orders;
+Order Details -> Products;
+Orders -> Customers;
+Orders -> Employees;
+Orders -> Shippers;
+Products -> Categories;
+Products -> Suppliers;
+Territories -> Region;
+'/
+
+@startuml
+skinparam handwritten true
+skinparam monochrome true
+skinparam packageStyle rect
+skinparam defaultFontName Buxton Sketch
+skinparam shadowing false
+
+actor Phil #black
+actor Editor #grey
+Phil -> Editor: Is the style a bit dated?
+Editor --> Phil: Yes, it is a bit nineties
+
+Phil -> Editor: How about a more handwritten 'arty' look?
+Editor --> Phil: Sure, how about this?
+
+@enduml
+
+@startuml
+graph G {
+a -- b[label="0.1",weight="0.1"];
+b -- c[label="0.2",weight="0.1"];
+a -- c[label="0.3",weight="0.3"];
+d -- c[label="0.4",weight="0.4"];
+e -- c[label="0.5",weight="0.6"];
+e -- a[label="0.6",weight="0.3"];
+a -- a;
+}
+@enduml
+
+
+a -- b;
+b -- c;
+a -- c;
+d -- c;
+e -- c;
+e -- a;
+
+@startuml
+digraph data_relationships {
+  "org-mode"
+  "org-exp-blocks"
+  "dot"
+  "ditaa"
+  "HTML" [shape=Mrecord, label="{HTML|publish on the web\l}"]
+  "LaTeX" [shape=Mrecord, label="{LaTeX|publish in PDF\l}"]
+  "org-mode" -> "org-exp-blocks"
+  "dot" -> "org-mode"
+  "ditaa" -> "org-mode"
+  "org-exp-blocks" -> "HTML"
+  "org-exp-blocks" -> LaTeX
+}
+@enduml
+
+
+@startditaa
+               O
+              -|- -.
+              / \   |
+              User  | Request
+                    V
+ Foobar         +--------+       .------.
+  Layer         |  Acme  |       '------'
+- - - - - - +   | Widget |<----->|      |
+   .----.   ;   +--------+       |      |
+  | do-  |  ;       |            '------'
+  |  dad |--^--<|---+            Database
+   '----'   ;
+            ;
+@endditaa
+
+@startditaa
+
+                          +-------------+
+                          |             |
+                          | Exponential |
+                          |             |
+                          +-------------+
+                                 |
+                          lambda |
+                                 v
++-------------+           +-------------+           +-------------+
+|             |   tau     |             |   lambda  |             |
+|  Lognormal  |---------->|    Gamma    |<----------| Poisson     |
+|             |           |             |---+       |             |
++-------------+           +-------------+   |       +-------------+
+      |                         ^ ^         | beta
+      |                   tau   | |         |
+      | tau                     | +---------+
+      |                   +-------------+
+      +------------------>|             |
+                          |     Normal  |
+                          |             |----+
+                          +-------------+    |
+                                     ^       | mu
+                                     |       |
+                                     +-------+
+@endditaa
+
+
 
 @startuml
 digraph G {
