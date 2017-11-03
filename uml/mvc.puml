@@ -1,6 +1,6 @@
 @startuml
 digraph G {
-node[shape=box, style=rounded, shadow_offset=7, shadow_blur=5];Model;View;Controller
+node[shape=Mrecord, style=rounded, shadow_offset=7, shadow_blur=5];Model;View;Controller
     View -> Model
     Controller -> View
     Controller -> Model
@@ -135,12 +135,7 @@ HumanResources.vEmployeeDepartmentHistory --|> HumanResources.Employee:Reference
 HumanResources.vEmployeeDepartmentHistory --|> HumanResources.EmployeeDepartmentHistory:References
 HumanResources.vEmployeeDepartmentHistory --|> Person.Person:References
 HumanResources.vEmployeeDepartmentHistory --|> HumanResources.Shift:References
-note right: https://stackoverflow.com/questions/46996937/shadow-in-graphviz#comment80940612_46996937
 
-note left
- You can use images
-<img:https://i.stack.imgur.com/eieWA.png>
-end note
 @enduml
 
 @startuml
