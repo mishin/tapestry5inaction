@@ -5,9 +5,126 @@ node[shape=box, style=rounded, shadow_offset=7, shadow_blur=5];Model;View;Contro
     Controller -> View
     Controller -> Model
 }
+
+note left
+ You can use images
+<img:https://i.stack.imgur.com/eieWA.png>
+end note
 @enduml
 
 @startuml
+participant Alice
+participant "The **Famous** Bob" as Bob
+Alice -> Bob : hello --there--
+... Some ~~long delay~~ ...
+Bob -> Alice : ok
+note left
+This is **bold**
+This is //italics//
+This is ""monospaced""
+This is --stroked --
+This is __underlined__
+This is ~~waved~~
+end note
+Alice -> Bob : A //well formatted// message
+note right of Alice
+This is <back:cadetblue ><size:18>displayed </size></back>
+__left of__ Alice.
+end note
+note left of Bob
+<u:red>This</u> is <color #118888>displayed </color>
+**<color purple>left of</color> <s:red>Alice </strike> Bob**.
+end note
+note over Alice, Bob
+<w:#FF33FF>This is hosted </w> by <img https://i.stack.imgur.com/eieWA.png>
+end note
+@enduml
+
+
+@startuml
+object "inbound message" as m1
+object "XML Splitter" as s1
+
+m1 : <img:https://i.stack.imgur.com/eieWA.png>
+s1 : <img:SplitterIcon.gif>
+m2 : <img:MessageIcon.gif>
+
+m1 -> s1
+s1 -> m2
+@enduml
+ @startuml
+
+      'style options
+      skinparam monochrome true
+      skinparam circledCharacterRadius 9
+      skinparam circledCharacterFontSize 8
+      skinparam classAttributeIconSize 0
+      hide empty members
+
+      abstract class AbstractClass {
+        - privateField
+        + publicField
+        # protectedField
+        ~ packagePrivateField
+        - privateMethod()
+        + publicMethod()
+        # protectedMethod()
+        ~ packagePrivateMethod()
+         }
+
+      class Dummy {
+        {static} staticID
+        {abstract} void methods()
+         }
+
+      class Flight {
+         flightNumber : Integer
+         departureTime : Date
+         }
+
+      package "Classic Collections" {
+
+         abstract class AbstractList
+         abstract AbstractCollection
+         interface List
+         interface Collection
+
+         List <|-- AbstractList
+         Collection <|-- AbstractCollection
+
+         Collection <|- List
+         AbstractCollection <|- AbstractList
+         AbstractList <|-- ArrayList
+
+         class ArrayList {
+           Object[] elementData
+           size()
+            }
+      }
+
+      enum TimeUnit {
+        DAYS
+        HOURS
+        MINUTES
+      }
+
+
+      class Student {
+        Name
+      }
+      Student "0..*" -- "1..*" Course
+      (Student, Course) .. Enrollment
+
+      class Enrollment {
+        drop()
+        cancel()
+      }
+
+      @enduml
+
+@startuml
+
+
 
 hide empty members
 hide circle
@@ -18,7 +135,12 @@ HumanResources.vEmployeeDepartmentHistory --|> HumanResources.Employee:Reference
 HumanResources.vEmployeeDepartmentHistory --|> HumanResources.EmployeeDepartmentHistory:References
 HumanResources.vEmployeeDepartmentHistory --|> Person.Person:References
 HumanResources.vEmployeeDepartmentHistory --|> HumanResources.Shift:References
+note right: https://stackoverflow.com/questions/46996937/shadow-in-graphviz#comment80940612_46996937
 
+note left
+ You can use images
+<img:https://i.stack.imgur.com/eieWA.png>
+end note
 @enduml
 
 @startuml
