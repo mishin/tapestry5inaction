@@ -5,3 +5,6 @@ http://renenyffenegger.ch/notes/tools/Graphviz/examples/index
 http://wingraphviz.sourceforge.net/wingraphviz/language/arrow_type.htm
 
 http://renenyffenegger.ch/notes/tools/Graphviz/examples/edge-crossing
+
+
+http://maikelshortcuts.blogspot.ru/2014/12/alexnet-graphviz-visualization.html
