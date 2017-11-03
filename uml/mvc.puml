@@ -8,8 +8,264 @@ node[shape=Mrecord, style=rounded, shadow_offset=7, shadow_blur=5];Model;View;Co
 
 note left
  You can use images
-<img:https://i.stack.imgur.com/eieWA.png>
+<img:../mvc.png>
 end note
+@enduml
+
+
+
+@startuml
+skinparam dpi 300
+scale 1200*600
+object "inbound message" as m1
+object "XML Splitter" as s1
+
+m1 : <img:../mvc.png>
+s1 : <img:SplitterIcon.gif>
+m2 : <img:MessageIcon.gif>
+
+m1 -> s1
+s1 -> m2
+@enduml
+
+@startuml
+digraph G {
+  rankdir=LR;
+  size="7,5";
+  browser->thread[style=invis];
+  browser->ui_thread;
+  browser->db_thread;
+  browser->webkit_thread;
+  browser->cache_thread;
+  browser->file_thread;
+  browser->io_thread;
+  io_thread[style=filled];
+  cache_thread[style=filled];
+  ui_thread->thread[label=inherit constraint=false];
+  ui_thread->messageloop[style=dotted];
+  db_thread->messageloop[style=dotted];
+  webkit_thread->messageloop[style=dotted];
+  cache_thread->messageloop[style=dotted];
+  file_thread->messageloop[style=dotted];
+  io_thread->messageloop[style=dotted];
+}
+@enduml
+
+@startuml
+together {
+   interface Widget {
+     callFred()
+     callBarney()
+   }
+
+   class A
+   class B
+   class C
+}
+
+Widget ()- A
+Widget ()- B
+Widget ()- C
+@enduml
+
+@startuml
+|Swimlane1|
+start
+:OP1;
+|Swimlane2|
+while (Form Valid) is (no)
+:OP2;
+|Swimlane1|
+:Modify Details;
+endwhile (yes)
+|Swimlane2|
+:Add Detals to System;
+:OP3;
+:foo5;
+stop
+@enduml
+
+@startuml
+skinparam rectangle<<desc>> {
+    backgroundColor Transparent
+    borderColor Transparent
+    titleFontColor Red
+    stereotypeFontColor Transparent
+}
+
+folder folder2 {
+    folder folder3 [
+        text bla bla
+    ]
+    artifact art2 [
+        more text
+    ]
+    rectangle f2<<desc>> [
+        Here you can have some explanation with
+        ====
+        --Markdown-- //formatting// ~~elements~~
+    ]
+
+    folder3 -[hidden]- f2
+}
+@enduml
+
+@startuml
+folder folder2 {
+    folder folder3 [
+        text bla bla
+    ]
+    artifact art2 [
+        more text
+    ]
+}
+
+note bottom of folder2
+    Here you can have some explanation with
+    ====
+    --Markdown-- //formatting// ~~elements~~
+end note
+@enduml
+
+@startuml
+participant T1
+participant T2
+participant Main
+
+par
+    T1 -> Main ++ #red: start
+    Main --> T1 -- #red : done
+
+    else
+
+    T2 -> Main ++ #yellow: start
+    Main --> T2 -- #yellow : done
+end
+@enduml
+
+@startuml
+
+  actor Member
+
+  memberTypeA --|> Member
+  memberTypeB --|> Member
+  memberTypeC --|> Member
+
+@enduml
+
+@startuml
+digraph G {
+  rankdir=LR;
+  size="7,5";
+  browser->ui_thread;
+  browser->db_thread;
+  browser->webkit_thread;
+  browser->cache_thread;
+  browser->file_thread;
+  browser->io_thread;
+  io_thread[style=filled];
+  cache_thread[style=filled];
+  ui_thread->thread[label=inherit];
+  ui_thread->messageloop[style=dotted];
+  db_thread->messageloop[style=dotted];
+  webkit_thread->messageloop[style=dotted];
+  cache_thread->messageloop[style=dotted];
+  file_thread->messageloop[style=dotted];
+  io_thread->messageloop[style=dotted];
+}
+@enduml
+
+@startuml
+graph G {
+      splines=false;
+      node[shape=circle, style=filled]
+      subgraph cluster_1 {
+
+      subgraph cluster_1r {
+         a12 [label="a",fillcolor=lightgrey]
+         b12 [label="b",fillcolor=lightgrey]
+         c12 [label="c",fillcolor=lightgrey]
+         d12 [label="d",fillcolor=lightgrey]
+         e12 [label="e",fillcolor=lightgrey]
+         a12--b12--c12--d12--e12 [style=invis]
+         }
+         subgraph cluster_1m {
+            color=invis;
+            a12m [style=invisible]
+            }
+      subgraph cluster_1l {
+         a11 [label="a",fillcolor=white]
+         b11 [label="b",fillcolor=white]
+         c11 [label="c",fillcolor=white]
+         d11 [label="d",fillcolor=white]
+         e11 [label="e",fillcolor=white]
+         a11--b11--c11--d11--e11 [style=invis]
+         }
+         c11--a12 [constraint=false]
+         c11--b12 [constraint=false]
+         d11--b12 [constraint=false]
+         e11--a12 [constraint=false]
+         e11--b12 [constraint=false]
+     }
+}
+@enduml
+
+@startditaa
+PerformTests;                                     PerformTests<-----+
+PerformTests -> TestsPassed;                            |           |
+TestsPassed [shape="diamond"];                          v     N     |
+TestsPassed -> Release [label="Yes"];             TestsPassed --> FixErrors
+TestsPassed:e -> FixErrors [label="No"];               Y|
+FixErrors -> PerformTests;                              v
+                                                     Release
+@endditaa
+
+@startditaa
++--------+   +-------+    +-------+
+|        +---+ ditaa +--> |       |
+|  Text  |   +-------+    |diagram|
+|Document|   |!magic!|    |       |
+|     {d}|   |       |    |       |
++---+----+   +-------+    +-------+
+	:                         ^
+	|       Lots of work      |
+	+-------------------------+
+@endditaa
+
+@startuml
+ditaa(--no-shadows, scale=0.8)
+/--------\   +-------+
+|cAAA    +---+Version|
+|  Data  |   |   V3  |
+|  Base  |   |cRED{d}|
+|     {s}|   +-------+
+\---+----/
+@enduml
+
+@startdot
+digraph foo {
+  node [style=rounded]
+  node1 [shape=box]
+  node2 [fillcolor=yellow, style="rounded,filled", shape=diamond]
+  node3 [shape=record, label="{ a | b | c }"]
+
+  node1 -> node2 -> node3
+}
+@enddot
+
+@startuml
+digraph G {
+    /* declare the node & style them */
+    "Node 1" [shape=diamond, penwidth=1, style=filled, fillcolor="#FCD975"];
+    "Node 2" [style=filled,fillcolor="#9ACEEB" ];
+    "Node 3" [shape=diamond, style=filled, fillcolor="#FCD975" ];
+    "Node 4" [style=filled, fillcolor="#9ACEEB" ]
+
+    /* declare the edges & style them */
+    "Node 1" -> "Node 2" [dir=none, weight=1, penwidth=3] ;
+    "Node 1" -> "Node 3" [dir=none, color="#9ACEEB"] ;
+    "Node 1" -> "Node 4" [arrowsize=.5, weight=2.]
+}
 @enduml
 
 @startuml
@@ -40,18 +296,6 @@ note over Alice, Bob
 end note
 @enduml
 
-
-@startuml
-object "inbound message" as m1
-object "XML Splitter" as s1
-
-m1 : <img:https://i.stack.imgur.com/eieWA.png>
-s1 : <img:SplitterIcon.gif>
-m2 : <img:MessageIcon.gif>
-
-m1 -> s1
-s1 -> m2
-@enduml
  @startuml
 
       'style options
